@@ -3,8 +3,7 @@ import MovieGrid from "@/components/MovieGrid"
 export type Movie = {
   id: number
   title: string
-  popularity: number
-  overview: string
+  vote_average: number
   release_date: string
   poster_path: string | null
 }
