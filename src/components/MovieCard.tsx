@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { FaStar } from "react-icons/fa"
+import Rating from "./Rating"
 
 type MovieCardProps = {
   title: string
@@ -26,10 +26,7 @@ function MovieCard({ title, rating, release_date, image }: MovieCardProps) {
         height={500}
         className=" w-full object-cover"
       />
-      <div className="absolute right-0 top-0 flex items-center gap-1 bg-green-600 p-1">
-        <FaStar />
-        <p className="text-xl text-white">{rating}</p>
-      </div>
+      <Rating rating={rating} />
       <div className="flex h-full flex-col gap-2 p-4">
         <h2 className="flex-1 text-xl font-bold">{title}</h2>
         <p>{formattedDate}</p>
