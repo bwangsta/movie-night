@@ -1,4 +1,5 @@
 import MovieGrid from "@/components/MovieGrid"
+import Navbar from "@/components/Navbar"
 
 export type Movie = {
   id: number
@@ -30,9 +31,14 @@ export async function getStaticProps() {
 
 function Home({ data }: HomeProps) {
   return (
-    <main>
-      <MovieGrid data={data} />
-    </main>
+    <>
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <MovieGrid data={data} />
+      </main>
+    </>
   )
 }
 

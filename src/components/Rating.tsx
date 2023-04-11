@@ -6,9 +6,9 @@ type RatingProps = {
 
 function Rating({ rating }: RatingProps) {
   let color = ""
-  if (rating > 8.0) {
+  if (rating >= 8.0) {
     color = "bg-green-600"
-  } else if (rating < 8.0 && rating > 6.0) {
+  } else if (rating < 8.0 && rating >= 6.0) {
     color = "bg-orange-500"
   } else {
     color = "bg-red-600"
