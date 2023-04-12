@@ -1,6 +1,6 @@
 import MovieGrid from "@/components/MovieGrid"
 import Navbar from "@/components/Navbar"
-import services from "../utils/services"
+import apiClient from "../services/api-client"
 import MovieRow from "@/components/MovieRow"
 
 export type Movie = {
@@ -11,33 +11,43 @@ export type Movie = {
   poster_path: string | null
 }
 
-type Response = {
-  page: number
-  results: Movie[]
-}
-
 type HomeProps = {
-  data: Movie[]
+  nowPlaying: Movie[]
+  popular: Movie[]
+  topRated: Movie[]
+  upcoming: Movie[]
 }
 
 export async function getStaticProps() {
-  const response = await fetch(`${services.nowPlaying}`)
-  const data: Response = await response.json()
+  const [nowPlaying, popular, topRated, upcoming] = await Promise.all([
+    fetch(`${apiClient.nowPlaying}`).then((response) => response.json()),
+    fetch(`${apiClient.popular}`).then((response) => response.json()),
+    fetch(`${apiClient.topRated}`).then((response) => response.json()),
+    fetch(`${apiClient.upcoming}`).then((response) => response.json()),
+  ])
 
   return {
-    props: { data: data.results },
+    props: {
+      nowPlaying: nowPlaying.results,
+      popular: popular.results,
+      topRated: topRated.results,
+      upcoming: upcoming.results,
+    },
   }
 }
 
-function Home({ data }: HomeProps) {
+function Home({ nowPlaying, popular, topRated, upcoming }: HomeProps) {
   return (
     <>
       <header>
         <Navbar />
       </header>
       <main>
-        <MovieRow title="Now Playing" data={data} />
-        <MovieGrid data={data} />
+        <MovieRow title="Now Playing" data={nowPlaying} />
+        <MovieRow title="Popular" data={popular} />
+        <MovieRow title="Top Rated" data={topRated} />
+        <MovieRow title="Upcoming" data={upcoming} />
+        {/* <MovieGrid data={nowPlayingData} /> */}
       </main>
     </>
   )
