@@ -1,6 +1,7 @@
 import MovieGrid from "@/components/MovieGrid"
 import Navbar from "@/components/Navbar"
 import services from "../utils/services"
+import MovieRow from "@/components/MovieRow"
 
 export type Movie = {
   id: number
@@ -20,7 +21,7 @@ type HomeProps = {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(`${services.nowPlaying.url}`)
+  const response = await fetch(`${services.nowPlaying}`)
   const data: Response = await response.json()
 
   return {
@@ -35,6 +36,7 @@ function Home({ data }: HomeProps) {
         <Navbar />
       </header>
       <main>
+        <MovieRow title="Now Playing" data={data} />
         <MovieGrid data={data} />
       </main>
     </>
