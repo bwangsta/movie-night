@@ -1,9 +1,7 @@
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation } from "swiper"
 import "swiper/css"
-import "swiper/css/navigation"
+import { Swiper, SwiperSlide } from "swiper/react"
 import { Movie } from "@/pages"
-import MovieCard from "./MovieCard"
+import MovieRowItem from "./MovieRowItem"
 
 type MovieRowProps = {
   title: string
@@ -15,8 +13,6 @@ function MovieRow({ title, data }: MovieRowProps) {
     <div className="p-4">
       <h2 className="mb-2 text-2xl">{title}</h2>
       <Swiper
-        modules={[Navigation]}
-        navigation
         slidesPerView={2}
         grabCursor={true}
         spaceBetween={8}
@@ -40,12 +36,7 @@ function MovieRow({ title, data }: MovieRowProps) {
       >
         {data.map((movie) => (
           <SwiperSlide key={movie.id}>
-            <MovieCard
-              title={movie.title}
-              rating={movie.vote_average}
-              release_date={movie.release_date}
-              image={movie.poster_path}
-            />
+            <MovieRowItem title={movie.title} image={movie.poster_path} />
           </SwiperSlide>
         ))}
       </Swiper>
