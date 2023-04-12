@@ -6,4 +6,5 @@ export default {
   nowPlaying: `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`,
   topRated: `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`,
   upcoming: `${BASE_URL}/movie/upcoming?api_key=${API_KEY}`,
+  trending: `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`,
 }
