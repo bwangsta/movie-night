@@ -1,5 +1,6 @@
 import MovieGrid from "@/components/MovieGrid"
 import Navbar from "@/components/Navbar"
+import services from "../utils/services"
 
 export type Movie = {
   id: number
@@ -19,9 +20,7 @@ type HomeProps = {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}`
-  )
+  const response = await fetch(`${services.nowPlaying.url}`)
   const data: Response = await response.json()
 
   return {
