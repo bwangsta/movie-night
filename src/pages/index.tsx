@@ -38,7 +38,7 @@ export async function getStaticProps() {
       popular: popular.results,
       topRated: topRated.results,
       upcoming: upcoming.results,
-      trending: trending.results
+      trending: trending.results,
     },
   }
 }
@@ -56,7 +56,7 @@ function Home({
         <Navbar />
       </header>
       <main>
-        <Hero data={trending} />
+        <Hero data={trending.slice(0, 10)} />
         <MovieRow title="Now Playing" data={nowPlaying} />
         <MovieRow title="Popular" data={popular} />
         <MovieRow title="Top Rated" data={topRated} />

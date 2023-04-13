@@ -13,9 +13,9 @@ function MovieRowItem({ title, image }: MovieRowItemProps) {
         alt={title}
         width={500}
         height={500}
-        className=" w-full object-cover"
+        className="w-full object-cover"
       />
-      <h2 className="absolute bottom-0 w-full flex-1 bg-slate-900 bg-opacity-80 p-2 text-xl font-bold text-slate-50">
+      <h2 className="absolute bottom-0 w-full flex-1 bg-slate-900 bg-opacity-80 p-2 text-base font-bold text-slate-50 md:text-xl">
         {title}
       </h2>
     </div>
