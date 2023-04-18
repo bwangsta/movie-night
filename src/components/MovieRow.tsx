@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Movie } from "@/pages"
 import MovieRowItem from "./MovieRowItem"
+import Link from "next/link"
 
 type MovieRowProps = {
   title: string
@@ -35,7 +36,9 @@ function MovieRow({ title, data }: MovieRowProps) {
       >
         {data.map((movie) => (
           <SwiperSlide key={movie.id}>
-            <MovieRowItem title={movie.title} image={movie.poster_path} />
+            <Link href={`/movies/${movie.id}`}>
+              <MovieRowItem title={movie.title} image={movie.poster_path} />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

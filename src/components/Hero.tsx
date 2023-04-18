@@ -28,7 +28,9 @@ function Hero({ data }: HeroProps) {
         {data.map((movie) => (
           <SwiperSlide key={movie.id}>
             <HeroItem
+              id={movie.id}
               title={movie.title}
+              backdrop={movie.backdrop_path}
               image={movie.poster_path}
               overview={movie.overview}
             />

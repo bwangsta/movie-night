@@ -4,13 +4,23 @@ import apiClient from "../services/api-client"
 import MovieRow from "@/components/MovieRow"
 import Hero from "@/components/Hero"
 
+type Genre = {
+  id: number
+  name: string
+}
+
 export type Movie = {
   id: number
   title: string
   vote_average: number
   release_date: string
   poster_path: string | null
+  backdrop_path: string | null
   overview: string
+  genres: Genre[]
+  revenue: number
+  runtime: number | null
+  status: string
 }
 
 type HomeProps = {
