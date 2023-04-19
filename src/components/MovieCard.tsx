@@ -24,7 +24,7 @@ function MovieCard({ title, rating, release_date, image }: MovieCardProps) {
         alt={title}
         width={500}
         height={500}
-        className=" w-full object-cover"
+        className="w-full object-cover"
       />
       <Rating rating={rating} />
       <div className="flex h-full flex-col gap-2 p-4">

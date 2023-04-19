@@ -17,20 +17,23 @@ function MovieRow({ title, data }: MovieRowProps) {
         grabCursor={true}
         spaceBetween={12}
         breakpoints={{
-          640: {
+          425: {
             slidesPerView: 3,
           },
-          768: {
+          640: {
             slidesPerView: 4,
           },
-          1024: {
+          768: {
             slidesPerView: 5,
           },
-          1280: {
+          1024: {
             slidesPerView: 6,
           },
-          1536: {
+          1280: {
             slidesPerView: 7,
+          },
+          1536: {
+            slidesPerView: 8,
           },
         }}
       >
