@@ -21,27 +21,46 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 function Movie({ movie }: MovieProps) {
   return (
-    <div className="grid min-h-screen items-center justify-items-center p-8 md:grid-cols-2">
-      <Image
-        src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-        alt={movie.title}
-        width={400}
-        height={400}
-      />
-      <div>
-        <h1 className="text-3xl">{movie.title}</h1>
-        <div className="flex flex-wrap gap-1">
-          {movie.genres.map((genre) => (
-            <div key={genre.id} className="rounded-full bg-slate-500 px-2">
-              <p>{genre.name}</p>
-            </div>
-          ))}
+    <>
+      <div
+        className="relative min-h-offset bg-black"
+        style={{
+          clipPath: "inset(0 0 0 0)",
+        }}
+      >
+        <div className="fixed left-0 top-0 h-full w-full">
+          <Image
+            src={"https://image.tmdb.org/t/p/w1280" + movie.backdrop_path}
+            alt={movie.title}
+            fill
+            className="bg-fixed object-cover opacity-25"
+            priority
+          />
         </div>
-        <p>Status: {movie.status}</p>
-        <p>{movie.release_date}</p>
-        <p>{movie.overview}</p>
+        <div className="absolute grid min-h-offset items-center justify-items-center px-8 md:grid-cols-2">
+          <Image
+            src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+            alt={movie.title}
+            width={300}
+            height={300}
+            className="h-auto rounded-lg"
+          />
+          <div className="space-y-4 text-slate-100">
+            <h1 className="text-4xl">{movie.title}</h1>
+            <div className="flex flex-wrap gap-1">
+              {movie.genres.map((genre) => (
+                <div key={genre.id} className="rounded-full bg-slate-500 px-2">
+                  <p>{genre.name}</p>
+                </div>
+              ))}
+            </div>
+            <p>Status: {movie.status}</p>
+            <p>{movie.release_date}</p>
+            <p>{movie.overview}</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -10,6 +10,9 @@ module.exports = {
       gridTemplateColumns: {
         fluid: "repeat(auto-fit, minmax(13rem, 1fr))",
       },
+      minHeight: {
+        offset: "calc(100vh - 4.5rem)",
+      },
     },
   },
   daisyui: {

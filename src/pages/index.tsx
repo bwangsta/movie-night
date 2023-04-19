@@ -62,17 +62,12 @@ function Home({
 }: HomeProps) {
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
-      <main>
-        <Hero data={trending.slice(0, 10)} />
-        <MovieRow title="Now Playing" data={nowPlaying} />
-        <MovieRow title="Popular" data={popular} />
-        <MovieRow title="Top Rated" data={topRated} />
-        <MovieRow title="Upcoming" data={upcoming} />
-        {/* <MovieGrid data={nowPlayingData} /> */}
-      </main>
+      <Hero data={trending.slice(0, 10)} />
+      <MovieRow title="Now Playing" data={nowPlaying} />
+      <MovieRow title="Popular" data={popular} />
+      <MovieRow title="Top Rated" data={topRated} />
+      <MovieRow title="Upcoming" data={upcoming} />
+      {/* <MovieGrid data={nowPlayingData} /> */}
     </>
   )
 }
