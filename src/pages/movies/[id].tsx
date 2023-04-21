@@ -37,7 +37,7 @@ function Movie({ movie }: MovieProps) {
             priority
           />
         </div>
-        <div className="absolute grid min-h-offset items-center justify-items-center px-8 md:grid-cols-2">
+        <div className="absolute grid min-h-offset items-center justify-items-center gap-6 p-8 md:grid-cols-2">
           <Image
             src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
             alt={movie.title}
