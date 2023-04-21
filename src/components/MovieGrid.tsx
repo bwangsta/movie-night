@@ -7,7 +7,7 @@ type MovieGridProps = {
 
 function MovieGrid({ data }: MovieGridProps) {
   return (
-    <div className="grid grid-cols-fluid gap-8 p-8">
+    <div className="grid grid-cols-fluid gap-4">
       {data.map((movie) => (
         <MovieCard
           key={movie.id}

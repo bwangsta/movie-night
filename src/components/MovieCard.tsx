@@ -9,13 +9,13 @@ type MovieCardProps = {
 }
 
 function MovieCard({ title, rating, release_date, image }: MovieCardProps) {
-  const date = new Date(release_date)
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }
-  const formattedDate = new Intl.DateTimeFormat("default", options).format(date)
+  // const date = new Date(release_date)
+  // const options: Intl.DateTimeFormatOptions = {
+  //   year: "numeric",
+  //   month: "long",
+  //   day: "numeric",
+  // }
+  // const formattedDate = new Intl.DateTimeFormat("default", options).format(date)
 
   return (
     <div className="relative flex flex-col overflow-hidden rounded-xl bg-slate-700">
@@ -28,8 +28,8 @@ function MovieCard({ title, rating, release_date, image }: MovieCardProps) {
       />
       <Rating rating={rating} />
       <div className="flex h-full flex-col gap-2 p-4">
-        <h2 className="flex-1 text-xl font-bold">{title}</h2>
-        <p>{formattedDate}</p>
+        <h2 className="flex-1 text-lg font-bold">{title}</h2>
+        {/* <p>{formattedDate}</p> */}
       </div>
     </div>
   )
