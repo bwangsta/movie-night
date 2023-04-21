@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 function SearchPage({ movies, query }: SearchPageProps) {
   return (
-    <div className="space-y-4 px-6">
+    <div className="space-y-4 p-6">
       <h1 className="text-2xl">Search results for &quot;{query}&quot;</h1>
       <MovieGrid data={movies} />
     </div>

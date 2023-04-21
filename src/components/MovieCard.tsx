@@ -22,7 +22,7 @@ function MovieCard({ id, title, rating, release_date, image }: MovieCardProps) {
         className="w-full object-cover"
       />
       <Rating rating={rating} />
-      <div className="flex h-full flex-col gap-2 p-4">
+      <div className="flex h-full flex-col gap-2 p-2">
         <h2 className="flex-1 text-lg font-bold">
           <Link href={`/movies/${id}`}>{title}</Link>
         </h2>
