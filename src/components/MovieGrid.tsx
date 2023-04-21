@@ -11,6 +11,7 @@ function MovieGrid({ data }: MovieGridProps) {
       {data.map((movie) => (
         <MovieCard
           key={movie.id}
+          id={movie.id}
           title={movie.title}
           rating={movie.vote_average}
           release_date={movie.release_date}

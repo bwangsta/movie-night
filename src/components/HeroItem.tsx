@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useRouter } from "next/router"
 import Link from "next/link"
 
 type HeroItemProps = {
@@ -10,6 +11,8 @@ type HeroItemProps = {
 }
 
 function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
+  const router = useRouter()
+
   return (
     <div
       style={{
@@ -29,16 +32,17 @@ function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
         <img
           src={"https://image.tmdb.org/t/p/w342" + image}
           alt={title}
-          className="h-auto w-72 rounded-lg"
+          className="h-auto w-72 rounded-lg hover:cursor-pointer"
+          onClick={() => router.push(`/movies/${id}`)}
         />
         <div className="hidden md:block">
           <h1 className="text-2xl font-bold md:text-4xl">{title}</h1>
           <p className="mb-4 mt-2 max-h-[10rem] overflow-y-auto md:my-6">
             {overview}
           </p>
-          <button className="btn border-0 bg-blue-600">
-            <Link href={`/movies/${id}`}>Learn More</Link>
-          </button>
+          <Link href={`/movies/${id}`} className="btn border-0 bg-blue-600">
+            Learn More
+          </Link>
         </div>
       </div>
     </div>
