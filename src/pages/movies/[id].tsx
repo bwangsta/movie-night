@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next"
 import Image from "next/image"
 import { Movie } from ".."
+import { formatDate } from "@/utils/helpers"
 
 type MovieProps = {
   movie: Movie
@@ -55,7 +56,7 @@ function Movie({ movie }: MovieProps) {
               ))}
             </div>
             <p>Status: {movie.status}</p>
-            <p>{movie.release_date}</p>
+            {movie.release_date && <p>{formatDate(movie.release_date)}</p>}
             <p>{movie.overview}</p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Rating from "./Rating"
+import { formatDate } from "@/utils/helpers"
 
 type MovieCardProps = {
   title: string
@@ -9,14 +10,6 @@ type MovieCardProps = {
 }
 
 function MovieCard({ title, rating, release_date, image }: MovieCardProps) {
-  // const date = new Date(release_date)
-  // const options: Intl.DateTimeFormatOptions = {
-  //   year: "numeric",
-  //   month: "long",
-  //   day: "numeric",
-  // }
-  // const formattedDate = new Intl.DateTimeFormat("default", options).format(date)
-
   return (
     <div className="relative flex flex-col overflow-hidden rounded-xl bg-slate-700">
       <Image
@@ -29,7 +22,7 @@ function MovieCard({ title, rating, release_date, image }: MovieCardProps) {
       <Rating rating={rating} />
       <div className="flex h-full flex-col gap-2 p-4">
         <h2 className="flex-1 text-lg font-bold">{title}</h2>
-        {/* <p>{formattedDate}</p> */}
+        {release_date && <p>{formatDate(release_date)}</p>}
       </div>
     </div>
   )
