@@ -10,7 +10,7 @@ type MovieRowProps = {
 
 function MovieRow({ title, data }: MovieRowProps) {
   return (
-    <div className="px-8 py-2">
+    <div className="px-4 py-2">
       <h2 className="mb-2 text-2xl">{title}</h2>
       <Swiper
         slidesPerView={2}

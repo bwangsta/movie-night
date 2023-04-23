@@ -34,18 +34,21 @@ function Movie({ movie }: MovieProps) {
             src={"https://image.tmdb.org/t/p/w1280" + movie.backdrop_path}
             alt={movie.title}
             fill
+            sizes="50vw"
             className="bg-fixed object-cover opacity-25"
             priority
           />
         </div>
         <div className="absolute grid min-h-offset items-center justify-items-center gap-6 p-8 md:grid-cols-2">
-          <Image
-            src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-            alt={movie.title}
-            width={300}
-            height={300}
-            className="h-auto rounded-lg"
-          />
+          <div className="relative h-72 w-full md:h-96">
+            <Image
+              src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+              alt={movie.title}
+              fill
+              sizes="50vw"
+              className="rounded-lg object-contain"
+            />
+          </div>
           <div className="space-y-4 text-slate-100">
             <h1 className="text-4xl">{movie.title}</h1>
             <div className="flex flex-wrap gap-1">
