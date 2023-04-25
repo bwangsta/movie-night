@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import Rating from "./Rating"
 import { formatDate } from "@/utils/helpers"
+import placeholderImage from "../asssets/images/placeholder.webp"
 
 type MovieCardProps = {
   id: number
@@ -16,7 +17,9 @@ function MovieCard({ id, title, rating, release_date, image }: MovieCardProps) {
     <div className="flex flex-col overflow-hidden rounded-xl bg-slate-700">
       <div className="relative h-96 w-full">
         <Image
-          src={"https://image.tmdb.org/t/p/w500" + image}
+          src={
+            image ? `https://image.tmdb.org/t/p/w500${image}` : placeholderImage
+          }
           alt={title}
           fill
           sizes="50vw"

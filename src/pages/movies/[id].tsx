@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next"
 import Image from "next/image"
 import { Movie } from ".."
 import { formatDate } from "@/utils/helpers"
+import placeholderImage from "../../asssets/images/placeholder.webp"
 
 type MovieProps = {
   movie: Movie
@@ -31,7 +32,11 @@ function Movie({ movie }: MovieProps) {
       >
         <div className="fixed left-0 top-0 h-full w-full">
           <Image
-            src={"https://image.tmdb.org/t/p/w1280" + movie.backdrop_path}
+            src={
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
+                : placeholderImage
+            }
             alt={movie.title}
             fill
             sizes="50vw"
@@ -42,7 +47,11 @@ function Movie({ movie }: MovieProps) {
         <div className="absolute grid min-h-offset items-center justify-items-center gap-6 p-8 md:grid-cols-2">
           <div className="relative h-72 w-full md:h-96">
             <Image
-              src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : placeholderImage
+              }
               alt={movie.title}
               fill
               sizes="50vw"
