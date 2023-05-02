@@ -29,6 +29,7 @@ function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
             src={"https://image.tmdb.org/t/p/w500" + image}
             alt={title}
             fill
+            priority
             sizes="50vw"
             className="object-contain hover:cursor-pointer"
             onClick={() => router.push(`/movies/${id}`)}
