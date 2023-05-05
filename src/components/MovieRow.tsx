@@ -11,7 +11,9 @@ type MovieRowProps = {
 function MovieRow({ title, data }: MovieRowProps) {
   return (
     <div className="px-4 py-2">
-      <h2 className="mb-2 text-2xl">{title}</h2>
+      <Link href={`/discover/${title.toLowerCase()}`} className="text-2xl">
+        {title}
+      </Link>
       <Swiper
         slidesPerView={2}
         grabCursor={true}
