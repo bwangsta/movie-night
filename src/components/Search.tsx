@@ -43,7 +43,7 @@ function Search() {
       <dialog
         ref={modalRef}
         onClick={(e) => handleCloseModal(e)}
-        className="rounded-full bg-slate-700 backdrop:bg-black backdrop:bg-opacity-60"
+        className="w-full rounded-full bg-slate-700 backdrop:bg-black backdrop:bg-opacity-60"
       >
         <form className="flex items-center gap-3" onSubmit={handleSubmit}>
           <FaSearch className="ml-2" />

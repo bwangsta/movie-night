@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/router"
 import Drawer from "react-modern-drawer"
 import "react-modern-drawer/dist/index.css"
 import Navbar from "./Navbar"
@@ -9,10 +10,23 @@ type LayoutProps = {
 }
 
 function Layout({ children }: LayoutProps) {
+  const { events } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    events.on("routeChangeStart", closeDrawer)
+
+    return () => {
+      events.off("routeChangeStart", closeDrawer)
+    }
+  }, [events])
 
   function toggleDrawer() {
     setIsOpen((prevIsOpen) => !prevIsOpen)
+  }
+
+  function closeDrawer() {
+    setIsOpen(false)
   }
 
   return (
