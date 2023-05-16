@@ -1,5 +1,3 @@
-import MovieGrid from "@/components/MovieGrid"
-import Navbar from "@/components/Navbar"
 import apiClient from "../services/api-client"
 import MovieRow from "@/components/MovieRow"
 import Hero from "@/components/Hero"
@@ -7,6 +5,14 @@ import Hero from "@/components/Hero"
 type Genre = {
   id: number
   name: string
+}
+
+type Recommendations = {
+  results: Movie[]
+}
+
+type Similar = {
+  results: Movie[]
 }
 
 export type Movie = {
@@ -21,6 +27,8 @@ export type Movie = {
   revenue: number
   runtime: number | null
   status: string
+  recommendations: Recommendations
+  similar: Similar
 }
 
 type HomeProps = {
@@ -67,7 +75,6 @@ function Home({
       <MovieRow title="Popular" data={popular} />
       <MovieRow title="Top Rated" data={topRated} />
       <MovieRow title="Upcoming" data={upcoming} />
-      {/* <MovieGrid data={nowPlayingData} /> */}
     </>
   )
 }

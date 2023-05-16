@@ -1,4 +1,5 @@
 import Image from "next/image"
+import placeholderImage from "../asssets/images/placeholder.webp"
 
 type MovieRowItemProps = {
   title: string
@@ -8,9 +9,11 @@ type MovieRowItemProps = {
 function MovieRowItem({ title, image }: MovieRowItemProps) {
   return (
     <div className="relative flex flex-col overflow-hidden rounded-xl bg-slate-700">
-      <div className="relative h-80 w-full">
+      <div className="relative h-64 w-full xl:h-80">
         <Image
-          src={"https://image.tmdb.org/t/p/w500" + image}
+          src={
+            image ? `https://image.tmdb.org/t/p/w500${image}` : placeholderImage
+          }
           alt={title}
           fill
           sizes="50vw,
@@ -23,7 +26,7 @@ function MovieRowItem({ title, image }: MovieRowItemProps) {
           className="object-cover"
         />
       </div>
-      <h2 className="absolute bottom-0 w-full flex-1 bg-slate-900 bg-opacity-80 p-2 text-base font-bold text-slate-50 md:text-xl">
+      <h2 className="absolute bottom-0 w-full flex-1 bg-slate-900 bg-opacity-90 p-2 text-base font-semibold text-slate-50 md:text-lg">
         {title}
       </h2>
     </div>

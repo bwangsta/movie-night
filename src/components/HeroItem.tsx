@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
 import Link from "next/link"
+import placeholderImage from "../asssets/images/placeholder.webp"
 
 type HeroItemProps = {
   id: number
@@ -16,7 +17,11 @@ function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
   return (
     <div className="relative bg-black">
       <Image
-        src={`https://image.tmdb.org/t/p/w1280${backdrop}`}
+        src={
+          image
+            ? `https://image.tmdb.org/t/p/original${backdrop}`
+            : placeholderImage
+        }
         alt={title}
         fill
         sizes="50vw"
@@ -26,11 +31,15 @@ function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
       <div className="mx-auto flex max-w-[70rem] flex-col items-center gap-4 px-6 py-4 md:flex-row md:gap-6 md:py-6">
         <div className="relative h-[35rem] w-full">
           <Image
-            src={"https://image.tmdb.org/t/p/w500" + image}
+            src={
+              image
+                ? `https://image.tmdb.org/t/p/w500${image}`
+                : placeholderImage
+            }
             alt={title}
             fill
             priority
-            sizes="50vw"
+            sizes="100vw"
             className="object-contain hover:cursor-pointer"
             onClick={() => router.push(`/movies/${id}`)}
           />
