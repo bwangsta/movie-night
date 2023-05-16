@@ -4,6 +4,7 @@ import { Movie } from ".."
 import { formatDate } from "@/utils/helpers"
 import placeholderImage from "../../asssets/images/placeholder.webp"
 import MovieRow from "@/components/MovieRow"
+import GenreTags from "@/components/GenreTags"
 
 type MovieProps = {
   movie: Movie
@@ -55,14 +56,8 @@ function Movie({ movie }: MovieProps) {
           />
         </div>
         <div className="space-y-4 text-slate-100">
-          <h1 className="text-4xl">{movie.title}</h1>
-          <div className="flex flex-wrap gap-1">
-            {movie.genres.map((genre) => (
-              <div key={genre.id} className="rounded-full bg-slate-500 px-2">
-                <p>{genre.name}</p>
-              </div>
-            ))}
-          </div>
+          <h1 className="text-4xl font-bold">{movie.title}</h1>
+          <GenreTags genres={movie.genres} />
           {movie.release_date && <p>{formatDate(movie.release_date)}</p>}
           <p>{movie.overview}</p>
         </div>

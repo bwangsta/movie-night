@@ -2,7 +2,7 @@ import apiClient from "../services/api-client"
 import MovieRow from "@/components/MovieRow"
 import Hero from "@/components/Hero"
 
-type Genre = {
+export type Genre = {
   id: number
   name: string
 }
