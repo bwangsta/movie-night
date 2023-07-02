@@ -5,6 +5,7 @@ import { formatDate } from "@/utils/helpers"
 import placeholderImage from "../../asssets/images/placeholder.webp"
 import MovieRow from "@/components/MovieRow"
 import GenreTags from "@/components/GenreTags"
+import { useMoviesDispatch } from "@/context/MoviesContext"
 
 type MovieProps = {
   movie: Movie
@@ -24,6 +25,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 function Movie({ movie }: MovieProps) {
+  const dispatch = useMoviesDispatch()
+
   return (
     <>
       <div className="relative h-80 w-full overflow-hidden sm:h-[30rem]">
@@ -60,6 +63,20 @@ function Movie({ movie }: MovieProps) {
           <GenreTags genres={movie.genres} />
           {movie.release_date && <p>{formatDate(movie.release_date)}</p>}
           <p>{movie.overview}</p>
+          <button
+            type="button"
+            className="btn"
+            onClick={() =>
+              dispatch({
+                type: "added",
+                id: movie.id,
+                title: movie.title,
+                image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+              })
+            }
+          >
+            Add to List
+          </button>
         </div>
       </div>
       <MovieRow

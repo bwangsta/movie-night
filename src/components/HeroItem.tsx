@@ -2,6 +2,7 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import placeholderImage from "../asssets/images/placeholder.webp"
+import { useMoviesDispatch } from "@/context/MoviesContext"
 
 type HeroItemProps = {
   id: number
@@ -13,6 +14,7 @@ type HeroItemProps = {
 
 function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
   const router = useRouter()
+  const dispatch = useMoviesDispatch()
 
   return (
     <div className="relative bg-black">
@@ -49,9 +51,25 @@ function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
           <p className="mb-4 mt-2 max-h-[10rem] overflow-y-auto md:my-6">
             {overview}
           </p>
-          <Link href={`/movies/${id}`} className="btn border-0 bg-blue-600">
-            Learn More
-          </Link>
+          <div className="flex gap-4">
+            <Link href={`/movies/${id}`} className="btn border-0 bg-blue-600">
+              Learn More
+            </Link>
+            <button
+              type="button"
+              className="btn bg-blue-600"
+              onClick={() => {
+                dispatch({
+                  type: "added",
+                  id: id,
+                  title: title,
+                  image: `https://image.tmdb.org/t/p/w500${image}`,
+                })
+              }}
+            >
+              + Add To List
+            </button>
+          </div>
         </div>
       </div>
     </div>

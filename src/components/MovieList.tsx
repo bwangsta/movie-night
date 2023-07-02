@@ -1,26 +1,39 @@
+import Image from "next/image"
+import { useMovies } from "@/context/MoviesContext"
+
 function MovieList() {
+  const movies = useMovies()
+
   return (
     <div className="overflow-x-auto">
-      <table className="table w-full">
+      <table className="mx-auto table w-full max-w-6xl">
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th>Title</th>
+            <th>Score</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Spider-Man: Across the Spider-Verse</td>
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>The Super Mario Bros. Movie</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>Suzume</td>
-          </tr>
+          {movies.map((movie, index) => {
+            return (
+              <tr key={movie.id}>
+                <td>{index + 1}</td>
+                <td className="relative h-40 p-0">
+                  <Image
+                    src={movie.image}
+                    alt={movie.title}
+                    fill
+                    sizes="100vw"
+                    className="object-contain"
+                  />
+                </td>
+                <td>{movie.title}</td>
+                <td>10</td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>
