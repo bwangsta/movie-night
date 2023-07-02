@@ -22,7 +22,7 @@ function Navbar({ toggleDrawer }: NavbarProps) {
       <div className="flex gap-2">
         <Search />
         <div className="rounded-full bg-slate-700 p-2">
-          <span>BW</span>
+          <Link href="/movielist">BW</Link>
         </div>
       </div>
     </nav>
