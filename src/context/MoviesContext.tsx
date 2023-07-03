@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image"
 import {
   createContext,
   useReducer,
@@ -16,14 +17,14 @@ type MoviesProviderProps = {
 type MovieListItem = {
   id: number
   title: string
-  image: string
+  image: string | StaticImageData
 }
 
 type MoviesAction = {
   type: string
   id: number
-  title: string
-  image: string
+  title?: string
+  image?: string | StaticImageData | null
 }
 
 export function useMovies() {
@@ -52,7 +53,7 @@ function moviesReducer(
 ): MovieListItem[] {
   switch (action.type) {
     case "added": {
-      // Check if movie already exists in the movies list
+      // Check if movie exists in the movies list
       const movie = movies.find((movie) => movie.id === action.id)
 
       // If the movie already exists in the list
@@ -62,8 +63,13 @@ function moviesReducer(
 
       return [
         ...movies,
-        { id: action.id, title: action.title, image: action.image },
+        { id: action.id, title: action.title!, image: action.image! },
       ]
+    }
+    case "removed": {
+      const selectedMovie = movies.find((movie) => movie.id === action.id)
+
+      return movies.filter((movie) => selectedMovie?.id !== movie.id)
     }
     default: {
       throw Error("Unknown action: " + action.type)

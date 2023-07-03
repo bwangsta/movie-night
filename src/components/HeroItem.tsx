@@ -1,8 +1,9 @@
+import { useMemo } from "react"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import placeholderImage from "../asssets/images/placeholder.webp"
-import { useMoviesDispatch } from "@/context/MoviesContext"
+import { useMovies, useMoviesDispatch } from "@/context/MoviesContext"
 
 type HeroItemProps = {
   id: number
@@ -14,7 +15,13 @@ type HeroItemProps = {
 
 function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
   const router = useRouter()
+  const movies = useMovies()
   const dispatch = useMoviesDispatch()
+
+  const inMovieList = useMemo(
+    () => movies.find((selectedMovie) => selectedMovie.id === id),
+    [movies, id]
+  )
 
   return (
     <div className="relative bg-black">
@@ -57,17 +64,24 @@ function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
             </Link>
             <button
               type="button"
-              className="btn bg-blue-600"
+              className={`btn ${inMovieList ? "bg-red-700" : "bg-blue-600"}`}
               onClick={() => {
-                dispatch({
-                  type: "added",
-                  id: id,
-                  title: title,
-                  image: `https://image.tmdb.org/t/p/w500${image}`,
-                })
+                if (inMovieList) {
+                  dispatch({
+                    type: "removed",
+                    id: id,
+                  })
+                } else {
+                  dispatch({
+                    type: "added",
+                    id: id,
+                    title: title,
+                    image: `https://image.tmdb.org/t/p/w500${image}`,
+                  })
+                }
               }}
             >
-              + Add To List
+              {inMovieList ? "Remove From List" : "Add To List"}
             </button>
           </div>
         </div>

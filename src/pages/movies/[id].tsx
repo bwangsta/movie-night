@@ -5,9 +5,10 @@ import { formatDate } from "@/utils/helpers"
 import placeholderImage from "../../asssets/images/placeholder.webp"
 import MovieRow from "@/components/MovieRow"
 import GenreTags from "@/components/GenreTags"
-import { useMoviesDispatch } from "@/context/MoviesContext"
+import { useMovies, useMoviesDispatch } from "@/context/MoviesContext"
+import { useMemo } from "react"
 
-type MovieProps = {
+type MoviePageProps = {
   movie: Movie
 }
 
@@ -24,8 +25,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-function Movie({ movie }: MovieProps) {
+function MoviePage({ movie }: MoviePageProps) {
+  const movies = useMovies()
   const dispatch = useMoviesDispatch()
+
+  const inMovieList = useMemo(
+    () => movies.find((selectedMovie) => selectedMovie.id === movie.id),
+    [movie.id, movies]
+  )
 
   return (
     <>
@@ -65,17 +72,24 @@ function Movie({ movie }: MovieProps) {
           <p>{movie.overview}</p>
           <button
             type="button"
-            className="btn"
-            onClick={() =>
-              dispatch({
-                type: "added",
-                id: movie.id,
-                title: movie.title,
-                image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-              })
-            }
+            className={`btn ${inMovieList ? "bg-red-700" : "bg-blue-600"}`}
+            onClick={() => {
+              if (inMovieList) {
+                dispatch({
+                  type: "removed",
+                  id: movie.id,
+                })
+              } else {
+                dispatch({
+                  type: "added",
+                  id: movie.id,
+                  title: movie.title,
+                  image: movie.poster_path,
+                })
+              }
+            }}
           >
-            Add to List
+            {inMovieList ? "Remove from List" : "Add to List"}
           </button>
         </div>
       </div>
@@ -93,4 +107,4 @@ function Movie({ movie }: MovieProps) {
   )
 }
 
-export default Movie
+export default MoviePage
