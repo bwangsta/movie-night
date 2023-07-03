@@ -1,5 +1,5 @@
 import Image from "next/image"
-import placeholderImage from "../asssets/images/placeholder.webp"
+import placeholderImage from "../assets/images/placeholder.webp"
 
 type MovieRowItemProps = {
   title: string
