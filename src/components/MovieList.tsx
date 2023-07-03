@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import placeholderImage from "../asssets/images/placeholder.webp"
+import placeholderImage from "../assets/images/placeholder.webp"
 import { useMovies, useMoviesDispatch } from "@/context/MoviesContext"
 
 function MovieList() {

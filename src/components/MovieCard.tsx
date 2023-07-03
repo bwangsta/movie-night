@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import Rating from "./Rating"
 import { formatDate } from "@/utils/helpers"
-import placeholderImage from "../asssets/images/placeholder.webp"
+import placeholderImage from "../assets/images/placeholder.webp"
 
 type MovieCardProps = {
   id: number
