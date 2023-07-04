@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Montserrat } from "next/font/google"
 import { useRouter } from "next/router"
 import Drawer from "react-modern-drawer"
 import "react-modern-drawer/dist/index.css"
@@ -8,6 +9,8 @@ import DrawerContent from "./DrawerContent"
 type LayoutProps = {
   children: React.ReactNode
 }
+
+const montserrat = Montserrat({ subsets: ["latin"] })
 
 function Layout({ children }: LayoutProps) {
   const { events } = useRouter()
@@ -30,7 +33,7 @@ function Layout({ children }: LayoutProps) {
   }
 
   return (
-    <>
+    <div className={montserrat.className}>
       <header>
         <Navbar toggleDrawer={toggleDrawer} />
       </header>
@@ -44,7 +47,7 @@ function Layout({ children }: LayoutProps) {
         <DrawerContent />
       </Drawer>
       <main>{children}</main>
-    </>
+    </div>
   )
 }
 
