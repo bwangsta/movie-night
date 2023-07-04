@@ -15,6 +15,7 @@ function MovieList() {
             <th>#</th>
             <th></th>
             <th>Title</th>
+            <th>Status</th>
             <th>Score</th>
           </tr>
         </thead>
@@ -40,6 +41,7 @@ function MovieList() {
                   <Link href={`/movies/${movie.id}`} className="text-xl">
                     {movie.title}
                   </Link>
+
                   <button
                     type="button"
                     className="btn-link block text-sm text-blue-500"
@@ -53,6 +55,7 @@ function MovieList() {
                     Remove
                   </button>
                 </td>
+                <td>{movie.status}</td>
                 <td>10</td>
               </tr>
             )

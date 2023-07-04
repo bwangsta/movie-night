@@ -5,8 +5,7 @@ import { formatDate } from "@/utils/helpers"
 import placeholderImage from "../../assets/images/placeholder.webp"
 import MovieRow from "@/components/MovieRow"
 import GenreTags from "@/components/GenreTags"
-import { useMovies, useMoviesDispatch } from "@/context/MoviesContext"
-import { useMemo } from "react"
+import StatusDropdown from "@/components/StatusDropdown"
 
 type MoviePageProps = {
   movie: Movie
@@ -26,14 +25,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 function MoviePage({ movie }: MoviePageProps) {
-  const movies = useMovies()
-  const dispatch = useMoviesDispatch()
-
-  const inMovieList = useMemo(
-    () => movies.find((selectedMovie) => selectedMovie.id === movie.id),
-    [movie.id, movies]
-  )
-
   return (
     <>
       <div className="relative h-80 w-full overflow-hidden sm:h-[30rem]">
@@ -70,27 +61,12 @@ function MoviePage({ movie }: MoviePageProps) {
           <GenreTags genres={movie.genres} />
           {movie.release_date && <p>{formatDate(movie.release_date)}</p>}
           <p>{movie.overview}</p>
-          <button
-            type="button"
-            className={`btn ${inMovieList ? "bg-red-700" : "bg-blue-600"}`}
-            onClick={() => {
-              if (inMovieList) {
-                dispatch({
-                  type: "removed",
-                  id: movie.id,
-                })
-              } else {
-                dispatch({
-                  type: "added",
-                  id: movie.id,
-                  title: movie.title,
-                  image: movie.poster_path,
-                })
-              }
-            }}
-          >
-            {inMovieList ? "Remove from List" : "Add to List"}
-          </button>
+          <StatusDropdown
+            key={movie.id}
+            id={movie.id}
+            title={movie.title}
+            image={movie.poster_path}
+          />
         </div>
       </div>
       <MovieRow

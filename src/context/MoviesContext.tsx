@@ -14,10 +14,19 @@ type MoviesProviderProps = {
   children: ReactNode
 }
 
+export type WatchStatus =
+  | "Completed"
+  | "Watching"
+  | "Plan To Watch"
+  | "Add To List"
+  | "Remove From List"
+  | undefined
+
 type MovieListItem = {
   id: number
   title: string
   image: string | StaticImageData
+  status: WatchStatus
 }
 
 type MoviesAction = {
@@ -25,6 +34,7 @@ type MoviesAction = {
   id: number
   title?: string
   image?: string | StaticImageData | null
+  status?: WatchStatus
 }
 
 export function useMovies() {
@@ -63,13 +73,24 @@ function moviesReducer(
 
       return [
         ...movies,
-        { id: action.id, title: action.title!, image: action.image! },
+        {
+          id: action.id,
+          title: action.title!,
+          image: action.image!,
+          status: action.status!,
+        },
       ]
     }
+    case "changed": {
+      return movies.map((movie) => {
+        if (movie.id === action.id) {
+          return { ...movie, status: action.status }
+        }
+        return movie
+      })
+    }
     case "removed": {
-      const selectedMovie = movies.find((movie) => movie.id === action.id)
-
-      return movies.filter((movie) => selectedMovie?.id !== movie.id)
+      return movies.filter((movie) => action.id !== movie.id)
     }
     default: {
       throw Error("Unknown action: " + action.type)
