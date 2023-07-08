@@ -22,11 +22,26 @@ export type WatchStatus =
   | "Remove From List"
   | undefined
 
+export type Score =
+  | ""
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | undefined
+
 type MovieListItem = {
   id: number
   title: string
   image: string | StaticImageData
   status: WatchStatus
+  score: Score
 }
 
 type MoviesAction = {
@@ -35,6 +50,7 @@ type MoviesAction = {
   title?: string
   image?: string | StaticImageData | null
   status?: WatchStatus
+  score?: Score
 }
 
 export function useMovies() {
@@ -78,13 +94,14 @@ function moviesReducer(
           title: action.title!,
           image: action.image!,
           status: action.status!,
+          score: action.score!,
         },
       ]
     }
     case "changed": {
       return movies.map((movie) => {
         if (movie.id === action.id) {
-          return { ...movie, status: action.status }
+          return { ...movie, status: action.status, score: action.score }
         }
         return movie
       })

@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import placeholderImage from "../assets/images/placeholder.webp"
 import { useMovies, useMoviesDispatch } from "@/context/MoviesContext"
+import EditMovie from "./EditMovie"
 
 function MovieList() {
   const movies = useMovies()
@@ -41,22 +42,28 @@ function MovieList() {
                   <Link href={`/movies/${movie.id}`} className="text-xl">
                     {movie.title}
                   </Link>
-
-                  <button
-                    type="button"
-                    className="btn-link block text-sm text-blue-500"
-                    onClick={() =>
-                      dispatch({
-                        type: "removed",
-                        id: movie.id,
-                      })
-                    }
-                  >
-                    Remove
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      className="btn-link block text-sm text-blue-500"
+                      onClick={() =>
+                        dispatch({
+                          type: "removed",
+                          id: movie.id,
+                        })
+                      }
+                    >
+                      Remove
+                    </button>
+                    <EditMovie
+                      id={movie.id}
+                      title={movie.title}
+                      status={movie.status}
+                    />
+                  </div>
                 </td>
                 <td>{movie.status}</td>
-                <td>10</td>
+                <td>{movie.score}</td>
               </tr>
             )
           })}

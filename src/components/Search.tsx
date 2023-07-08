@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa"
 import Modal from "./Modal"
 
 const styles = {
-  dialog: "w-full rounded-full",
+  dialog: "rounded-full w-full max-w-2xl",
   button: "h-10 w-10 rounded-full hover:bg-slate-600",
 }
 
