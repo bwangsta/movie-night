@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 function MoviePage({ movie }: MoviePageProps) {
   return (
     <>
-      <div className="relative h-80 w-full overflow-hidden sm:h-[30rem]">
+      <div className="relative h-72 w-full overflow-hidden sm:h-96 lg:h-[30rem] 2xl:h-[35rem]">
         <Image
           src={
             movie.backdrop_path
@@ -37,25 +37,22 @@ function MoviePage({ movie }: MoviePageProps) {
           alt={movie.title}
           fill
           sizes="100vw"
-          className="object-cover opacity-70"
+          className="object-cover object-top opacity-70"
           priority
         />
       </div>
-      <div className="mx-auto grid max-w-4xl items-center justify-items-center gap-8 px-4 py-8 sm:grid-cols-[1fr_2fr]">
-        <div className="relative h-96 w-full">
-          <Image
-            src={
-              movie.poster_path
-                ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                : placeholderImage
-            }
-            alt={movie.title}
-            fill
-            sizes="100vw
-            (min-width: 640px) 50vw"
-            className="object-contain sm:object-left"
-          />
-        </div>
+      <div className="mx-auto grid max-w-4xl items-center justify-items-center gap-12 px-4 py-8 sm:grid-cols-[1fr_2fr]">
+        <Image
+          src={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+              : placeholderImage
+          }
+          alt={movie.title}
+          width={342}
+          height={513}
+          className="rounded-lg shadow-2xl"
+        />
         <div className="space-y-4 text-slate-100">
           <h1 className="text-4xl font-bold">{movie.title}</h1>
           <GenreTags genres={movie.genres} />

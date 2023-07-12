@@ -24,26 +24,22 @@ function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
         }
         alt={title}
         fill
-        sizes="50vw"
+        sizes="100vw"
         priority
         className="object-cover opacity-30"
       />
       <div className="mx-auto flex max-w-[70rem] flex-col items-center gap-4 px-6 py-4 md:flex-row md:gap-6 md:py-6">
-        <div className="relative h-[35rem] w-full">
-          <Image
-            src={
-              image
-                ? `https://image.tmdb.org/t/p/w500${image}`
-                : placeholderImage
-            }
-            alt={title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-contain hover:cursor-pointer"
-            onClick={() => router.push(`/movies/${id}`)}
-          />
-        </div>
+        <Image
+          src={
+            image ? `https://image.tmdb.org/t/p/w342${image}` : placeholderImage
+          }
+          alt={title}
+          width={342}
+          height={513}
+          priority
+          className="z-10 rounded-xl shadow-2xl hover:cursor-pointer"
+          onClick={() => router.push(`/movies/${id}`)}
+        />
         <div className="z-10 hidden text-slate-200 md:block">
           <h1 className="text-2xl font-bold md:text-4xl">{title}</h1>
           <p className="mb-4 mt-2 max-h-[10rem] overflow-y-auto md:my-6">

@@ -61,7 +61,7 @@ function StatusDropdown({ id, title, image }: StatusDropdownProps) {
 
   return (
     <div className="dropdown">
-      <label tabIndex={0} className="btn m-1 bg-blue-600">
+      <label tabIndex={0} className="btn m-0 bg-blue-600">
         {watchStatus}
       </label>
       <ul

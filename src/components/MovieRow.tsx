@@ -43,8 +43,14 @@ function MovieRow({ title, data, isLink = true }: MovieRowProps) {
           1280: {
             slidesPerView: 7,
           },
-          1536: {
+          1440: {
             slidesPerView: 8,
+          },
+          2000: {
+            slidesPerView: 9,
+          },
+          2560: {
+            slidesPerView: 10,
           },
         }}
       >

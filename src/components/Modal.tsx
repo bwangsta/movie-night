@@ -37,7 +37,7 @@ function Modal({ title, style, children, modalRef }: ModalProps) {
       </button>
       <dialog
         ref={modalRef}
-        className={`${style.dialog} bg-slate-700 shadow-sm backdrop:bg-black backdrop:bg-opacity-60 backdrop:backdrop-blur-sm`}
+        className={`${style.dialog} bg-slate-700 shadow-sm backdrop:bg-black backdrop:bg-opacity-60 backdrop:backdrop-blur`}
         onClick={(e) => handleCloseModal(e)}
       >
         {children}

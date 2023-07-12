@@ -14,7 +14,6 @@ function MovieGrid({ data }: MovieGridProps) {
           id={movie.id}
           title={movie.title}
           rating={movie.vote_average}
-          release_date={movie.release_date}
           image={movie.poster_path}
         />
       ))}

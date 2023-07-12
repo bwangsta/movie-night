@@ -29,6 +29,7 @@ function Search() {
       <form className="flex items-center gap-3" onSubmit={handleSubmit}>
         <FaSearch className="ml-2" />
         <input
+          id="search"
           type="search"
           placeholder="Search movies..."
           value={searchQuery}

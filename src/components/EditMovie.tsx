@@ -74,6 +74,7 @@ function EditMovie({ id, title, status }: EditMovieProps) {
               Score
             </label>
             <select
+              id="scoreSelect"
               value={selectedScore}
               className="select select-sm w-full max-w-[5rem]"
               onChange={(e) => setSelectedScore(e.target.value as Score)}
