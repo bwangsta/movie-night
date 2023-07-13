@@ -37,7 +37,7 @@ function MoviePage({ movie }: MoviePageProps) {
           alt={movie.title}
           fill
           sizes="100vw"
-          className="object-cover object-top opacity-70"
+          className="object-cover object-top-center opacity-70"
           priority
         />
       </div>

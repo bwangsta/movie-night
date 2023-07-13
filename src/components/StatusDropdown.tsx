@@ -17,23 +17,21 @@ function StatusDropdown({ id, title, image }: StatusDropdownProps) {
   const [watchStatus, setWatchStatus] = useState<WatchStatus>("Add To List")
   const dropdownRef = useRef<HTMLUListElement>(null)
 
-  const inMovieList = useMemo(
-    () => movies.find((selectedMovie) => selectedMovie.id === id),
+  const movie = useMemo(
+    () => movies.find((movie) => movie.id === id),
     [movies, id]
   )
-
   useEffect(() => {
-    const movie = movies.find((selectedMovie) => selectedMovie.id === id)
     if (movie) {
       setWatchStatus(movie.status)
     }
-  }, [id, movies])
+  }, [movie])
 
   function handleDropdownClick(status: WatchStatus) {
     setWatchStatus(status)
     dropdownRef?.current?.blur()
 
-    if (!inMovieList) {
+    if (!movie) {
       dispatch({
         type: "added",
         id: id,
@@ -78,7 +76,7 @@ function StatusDropdown({ id, title, image }: StatusDropdownProps) {
         <li onClick={() => handleDropdownClick("Plan To Watch")}>
           <a>Plan To Watch</a>
         </li>
-        {inMovieList && (
+        {movie && (
           <>
             <hr />
             <li onClick={() => handleDropdownClick("Remove From List")}>

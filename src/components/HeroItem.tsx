@@ -26,7 +26,7 @@ function HeroItem({ id, title, backdrop, image, overview }: HeroItemProps) {
         fill
         sizes="100vw"
         priority
-        className="object-cover opacity-30"
+        className="object-cover object-top-center opacity-30"
       />
       <div className="mx-auto flex max-w-[70rem] flex-col items-center gap-4 px-6 py-4 md:flex-row md:gap-6 md:py-6">
         <Image

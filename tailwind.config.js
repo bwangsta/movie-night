@@ -10,8 +10,8 @@ module.exports = {
       gridTemplateColumns: {
         fluid: "repeat(auto-fit, minmax(10rem, 1fr))",
       },
-      minHeight: {
-        offset: "calc(100vh - 4.5rem)",
+      objectPosition: {
+        "top-center": "center 15%",
       },
     },
   },
