@@ -41,18 +41,18 @@ function MoviePage({ movie }: MoviePageProps) {
           priority
         />
       </div>
-      <div className="mx-auto grid max-w-4xl items-center justify-items-center gap-12 px-4 py-8 sm:grid-cols-[1fr_2fr]">
-        <Image
-          src={
-            movie.poster_path
-              ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
-              : placeholderImage
-          }
-          alt={movie.title}
-          width={342}
-          height={513}
-          className="rounded-lg shadow-2xl"
-        />
+      <div className="mx-auto grid max-w-6xl items-center justify-items-center gap-12 px-4 py-8 sm:grid-cols-[1fr_2fr]">
+        <div className="relative aspect-poster w-72 overflow-hidden rounded-lg shadow-2xl">
+          <Image
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+                : placeholderImage
+            }
+            alt={movie.title}
+            fill
+          />
+        </div>
         <div className="space-y-4 text-slate-100">
           <h1 className="text-4xl font-bold">{movie.title}</h1>
           <GenreTags genres={movie.genres} />

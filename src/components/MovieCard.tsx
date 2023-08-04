@@ -13,15 +13,20 @@ type MovieCardProps = {
 function MovieCard({ id, title, rating, image }: MovieCardProps) {
   return (
     <div>
-      <div className="relative overflow-hidden rounded-xl">
+      <div className="relative aspect-poster overflow-hidden rounded-xl">
         <Rating rating={rating} />
         <Image
           src={
             image ? `https://image.tmdb.org/t/p/w342${image}` : placeholderImage
           }
           alt={title}
-          width={342}
-          height={513}
+          fill
+          sizes="100vw, 
+          (min-height: 330px) 50vw, 
+          (min-height: 560px) 33vw, 
+          (min-height: 735px) 25vw, 
+          (min-height: 912px) 20vw"
+          className="-z-10 object-cover"
         />
       </div>
       <h2 className="py-2 text-lg font-bold">

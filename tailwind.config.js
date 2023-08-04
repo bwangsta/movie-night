@@ -13,6 +13,9 @@ module.exports = {
       objectPosition: {
         "top-center": "center 15%",
       },
+      aspectRatio: {
+        poster: "1/1.5",
+      },
     },
   },
   daisyui: {
