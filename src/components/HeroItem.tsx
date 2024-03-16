@@ -1,6 +1,6 @@
 import Image from "next/image"
-import { useRouter } from "next/router"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import placeholderImage from "../assets/images/placeholder.webp"
 
 type HeroItemProps = {

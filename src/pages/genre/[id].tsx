@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout"
 import MovieGrid from "@/components/MovieGrid"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { Movie } from ".."
@@ -60,12 +61,15 @@ function GenrePage({ data, genreId }: GenrePageProps) {
     10752: "War",
     37: "Western",
   }
+  const genre = genreMap[genreId]
 
   return (
-    <div className="p-4">
-      <h1 className="mb-4 text-3xl font-bold">{genreMap[genreId]} Movies</h1>
-      <MovieGrid data={data} />
-    </div>
+    <Layout title={`${genre} Movies - Movie Night`}>
+      <div className="p-4">
+        <h1 className="mb-4 text-3xl font-bold">{genre} Movies</h1>
+        <MovieGrid data={data} />
+      </div>
+    </Layout>
   )
 }
 

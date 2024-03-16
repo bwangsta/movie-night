@@ -1,11 +1,12 @@
+import GenreTags from "@/components/GenreTags"
+import Layout from "@/components/Layout"
+import MovieRow from "@/components/MovieRow"
+import StatusDropdown from "@/components/StatusDropdown"
+import { formatDate } from "@/utils/helpers"
 import { GetServerSideProps } from "next"
 import Image from "next/image"
 import { Movie } from ".."
-import { formatDate } from "@/utils/helpers"
 import placeholderImage from "../../assets/images/placeholder.webp"
-import MovieRow from "@/components/MovieRow"
-import GenreTags from "@/components/GenreTags"
-import StatusDropdown from "@/components/StatusDropdown"
 
 type MoviePageProps = {
   movie: Movie
@@ -26,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 function MoviePage({ movie }: MoviePageProps) {
   return (
-    <>
+    <Layout title={`${movie.title} - Movie Night`}>
       <div className="relative h-72 w-full overflow-hidden sm:h-96 lg:h-[30rem] 2xl:h-[35rem]">
         <Image
           src={
@@ -76,7 +77,7 @@ function MoviePage({ movie }: MoviePageProps) {
         data={movie.similar.results}
         isLink={false}
       />
-    </>
+    </Layout>
   )
 }
 

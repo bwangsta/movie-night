@@ -1,6 +1,7 @@
+import Layout from "@/components/Layout"
+import MovieGrid from "@/components/MovieGrid"
 import { GetServerSideProps } from "next"
 import { Movie } from ".."
-import MovieGrid from "@/components/MovieGrid"
 
 type SearchPageProps = {
   movies: Movie[]
@@ -23,10 +24,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 function SearchPage({ movies, query }: SearchPageProps) {
   return (
-    <div className="space-y-4 p-6">
-      <h1 className="text-2xl">Search results for &quot;{query}&quot;</h1>
-      <MovieGrid data={movies} />
-    </div>
+    <Layout title={`${query} - Movie Night`}>
+      <div className="space-y-4 p-6">
+        <h1 className="text-2xl">Search results for &quot;{query}&quot;</h1>
+        <MovieGrid data={movies} />
+      </div>
+    </Layout>
   )
 }
 

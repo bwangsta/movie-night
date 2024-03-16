@@ -1,6 +1,7 @@
-import apiClient from "../services/api-client"
-import MovieRow from "@/components/MovieRow"
 import Hero from "@/components/Hero"
+import Layout from "@/components/Layout"
+import MovieRow from "@/components/MovieRow"
+import apiClient from "../services/api-client"
 
 export type Genre = {
   id: number
@@ -69,13 +70,13 @@ function Home({
   trending,
 }: HomeProps) {
   return (
-    <>
+    <Layout title="Movie Night">
       <Hero data={trending.slice(0, 10)} />
       <MovieRow title="Now Playing" data={nowPlaying} />
       <MovieRow title="Popular" data={popular} />
       <MovieRow title="Top Rated" data={topRated} />
       <MovieRow title="Upcoming" data={upcoming} />
-    </>
+    </Layout>
   )
 }
 

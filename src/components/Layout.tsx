@@ -1,18 +1,20 @@
-import { useState, useEffect } from "react"
 import { Montserrat } from "next/font/google"
+import Head from "next/head"
 import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 import Drawer from "react-modern-drawer"
 import "react-modern-drawer/dist/index.css"
-import Navbar from "./Navbar"
 import DrawerContent from "./DrawerContent"
+import Navbar from "./Navbar"
 
 type LayoutProps = {
+  title: string
   children: React.ReactNode
 }
 
 const montserrat = Montserrat({ subsets: ["latin"] })
 
-function Layout({ children }: LayoutProps) {
+function Layout({ title, children }: LayoutProps) {
   const { events } = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -34,6 +36,11 @@ function Layout({ children }: LayoutProps) {
 
   return (
     <div className={montserrat.className}>
+      <Head>
+        <title>{title}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <header>
         <Navbar toggleDrawer={toggleDrawer} />
       </header>

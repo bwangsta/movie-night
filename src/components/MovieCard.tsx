@@ -1,7 +1,7 @@
-import Link from "next/link"
 import Image from "next/image"
-import Rating from "./Rating"
+import { useRouter } from "next/router"
 import placeholderImage from "../assets/images/placeholder.webp"
+import Rating from "./Rating"
 
 type MovieCardProps = {
   id: number
@@ -11,8 +11,13 @@ type MovieCardProps = {
 }
 
 function MovieCard({ id, title, rating, image }: MovieCardProps) {
+  const router = useRouter()
+
   return (
-    <div>
+    <div
+      className="hover:cursor-pointer"
+      onClick={() => router.push(`/movies/${id}`)}
+    >
       <div className="relative aspect-poster overflow-hidden rounded-xl">
         <Rating rating={rating} />
         <Image
@@ -29,9 +34,7 @@ function MovieCard({ id, title, rating, image }: MovieCardProps) {
           className="-z-10 object-cover"
         />
       </div>
-      <h2 className="py-2 text-lg font-bold">
-        <Link href={`/movies/${id}`}>{title}</Link>
-      </h2>
+      <h2 className="py-2 text-lg font-bold">{title}</h2>
     </div>
   )
 }

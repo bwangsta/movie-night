@@ -1,5 +1,6 @@
-import { GetStaticPaths, GetStaticProps } from "next"
+import Layout from "@/components/Layout"
 import MovieGrid from "@/components/MovieGrid"
+import { GetStaticPaths, GetStaticProps } from "next"
 import { Movie } from ".."
 
 type DiscoverPageProps = {
@@ -32,17 +33,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 function DiscoverPage({ data, title }: DiscoverPageProps) {
+  const formattedTitle = title.replace(
+    /(\w)(\w*)/g,
+    (g0, g1, g2) => g1.toUpperCase() + g2.toLowerCase()
+  )
   return (
-    <div className="p-4">
-      <h1 className="mb-4 text-3xl font-bold">
-        {title.replace(
-          /(\w)(\w*)/g,
-          (g0, g1, g2) => g1.toUpperCase() + g2.toLowerCase()
-        )}{" "}
-        Movies
-      </h1>
-      <MovieGrid data={data} />
-    </div>
+    <Layout title={`${formattedTitle} Movies - Movie Night`}>
+      <div className="p-4">
+        <h1 className="mb-4 text-3xl font-bold">{formattedTitle} Movies</h1>
+        <MovieGrid data={data} />
+      </div>
+    </Layout>
   )
 }
 
