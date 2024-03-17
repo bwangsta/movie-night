@@ -26,7 +26,9 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+
 ![movie-night](https://github.com/bwangsta/movie-night/assets/60533686/9a733d01-73c1-49bb-b9bc-c364653dd700)
+[Demo](https://movie-night-bwangsta.vercel.app/)
 
 ## Built With
 
@@ -68,8 +70,8 @@ npm run dev
 
 ## Roadmap
 
-- [ ] Create movie list page
-- [ ] Add, update, remove movies from movie list
+- [x] Create movie list page
+- [x] Add, update, remove movies from movie list
 - [ ] Add accounts for users
 
 ## Acknowledgments

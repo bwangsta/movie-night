@@ -1,7 +1,7 @@
+import { useMovies, useMoviesDispatch } from "@/context/MoviesContext"
 import Image from "next/image"
 import Link from "next/link"
 import placeholderImage from "../assets/images/placeholder.webp"
-import { useMovies, useMoviesDispatch } from "@/context/MoviesContext"
 import EditMovie from "./EditMovie"
 
 function MovieList() {
@@ -34,7 +34,7 @@ function MovieList() {
                     }
                     alt={movie.title}
                     fill
-                    sizes="100vw"
+                    sizes="20vw"
                     className="object-contain"
                   />
                 </td>

@@ -52,6 +52,7 @@ function MoviePage({ movie }: MoviePageProps) {
             }
             alt={movie.title}
             fill
+            sizes="50vw 100vw"
           />
         </div>
         <div className="space-y-4 text-slate-100">
