@@ -26,8 +26,7 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-
-![movie-night](https://github.com/bwangsta/movie-night/assets/60533686/9a733d01-73c1-49bb-b9bc-c364653dd700)
+![Movie-Night](https://github.com/bwangsta/movie-night/assets/60533686/5a28221f-a857-4267-aade-c889644864d3)
 [Demo](https://movie-night-bwangsta.vercel.app/)
 
 ## Built With
